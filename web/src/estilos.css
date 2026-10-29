@@ -586,11 +586,6 @@ input[type='file'] {
   text-align: center;
 }
 
-.opcion-nivel {
-  font-size: 0.62rem;
-  color: #8a76a3;
-}
-
 /* --- El panel -------------------------------------------------------- */
 
 /* Aparece solo cuando lo que elegiste pide un dato, y trae SOLO los campos
