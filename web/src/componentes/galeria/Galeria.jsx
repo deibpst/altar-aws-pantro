@@ -19,7 +19,7 @@ import Opcion from './Opcion.jsx'
 
 const GRUPOS = [
   { id: 'tradicional', titulo: 'Tradicionales' },
-  { id: 'personal', titulo: 'Suyas' },
+  { id: 'personal', titulo: 'Extras' },
 ]
 
 function tiposDe(grupo) {

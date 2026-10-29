@@ -31,7 +31,6 @@ export default function Opcion({ tipo, info, lleno, onElegir }) {
           dangerouslySetInnerHTML={{ __html: arteDe(tipo) }}
         />
         <span className="opcion-nombre">{info.etiqueta}</span>
-        <span className="opcion-nivel">{nombreDeNivel(info.nivel)}</span>
       </button>
     </li>
   )
