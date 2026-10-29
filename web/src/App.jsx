@@ -6,7 +6,7 @@
 // el nombre.
 
 import { useState } from 'react'
-import { TIPOS, necesitaPanel } from './catalogo/elementos.js'
+import { necesitaPanel, gradaLibre } from './catalogo/elementos.js'
 import { useAltar } from './hooks/useAltar.js'
 import { useNombre } from './hooks/useNombre.js'
 import Encabezado from './componentes/layout/Encabezado.jsx'
@@ -35,7 +35,7 @@ export default function App() {
     }
     await altar.agregar({
       tipo,
-      nivel: TIPOS[tipo].nivel,
+      nivel: gradaLibre(tipo, altar.nivelLleno),
       texto: '',
       link: '',
       puestoPor: comoFirma,

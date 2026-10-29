@@ -131,6 +131,14 @@ export function necesitaPanel(tipo) {
 // La grada de arriba (nivel 3) aguanta mas fotos que las demas.
 export const cupoDe = (nivel) => (nivel === 3 ? 10 : 6)
 
+// Grada donde cae un tipo: la natural, o la primera con lugar si esta llena.
+// Devuelve null si todo el altar esta lleno.
+export function gradaLibre(tipo, nivelLleno) {
+  const natural = TIPOS[tipo].nivel
+  if (!nivelLleno(natural)) return natural
+  return NIVELES.find((n) => !nivelLleno(n.nivel))?.nivel ?? null
+}
+
 // El altar no arranca vacio. Esto es un set tradicional tipico, para que
 // desde el primer deploy se vea vestido y nadie empiece en una pagina
 // en blanco. Se puede borrar elemento por elemento.

@@ -14,7 +14,7 @@
 //
 // Lo que no pide nada cae directo al picarle. Lo que pide algo abre panel.
 
-import { TIPOS } from '../../catalogo/elementos.js'
+import { TIPOS, gradaLibre } from '../../catalogo/elementos.js'
 import Opcion from './Opcion.jsx'
 
 const GRUPOS = [
@@ -42,7 +42,7 @@ export default function Galeria({ nivelLleno, onElegir }) {
                 key={tipo}
                 tipo={tipo}
                 info={info}
-                lleno={nivelLleno(info.nivel)}
+                lleno={gradaLibre(tipo, nivelLleno) === null}
                 onElegir={onElegir}
               />
             ))}
