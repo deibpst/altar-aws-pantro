@@ -22,7 +22,7 @@ import { arteDe } from '../../catalogo/arte.js'
 import { idDeCancion, urlDelReproductor } from '../../lib/spotify.js'
 import { linkSeguro } from '../../lib/enlaces.js'
 
-export default function Elemento({ elemento, urlImagen, onQuitar }) {
+export default function Elemento({ elemento, urlImagen, onQuitar, onAbrir }) {
   const etiqueta = etiquetaDe(elemento.tipo)
   const link = linkSeguro(elemento.link)
   const cancion = link ? idDeCancion(link) : null
@@ -35,7 +35,15 @@ export default function Elemento({ elemento, urlImagen, onQuitar }) {
     <li className={clases.join(' ')} data-tipo={elemento.tipo}>
       <div className="elemento-figura">
         {urlImagen ? (
-          <img src={urlImagen} alt={elemento.texto || etiqueta} loading="lazy" />
+          <button
+            type="button"
+            className="elemento-foto"
+            aria-label={`Ver ${elemento.texto || etiqueta} en grande`}
+            disabled={elemento.pendiente}
+            onClick={() => onAbrir(elemento.id)}
+          >
+            <img src={urlImagen} alt={elemento.texto || etiqueta} loading="lazy" />
+          </button>
         ) : (
           // El SVG sale de catalogo/arte.js, que es NUESTRO codigo, por eso
           // va con dangerouslySetInnerHTML. El texto que escribe la gente

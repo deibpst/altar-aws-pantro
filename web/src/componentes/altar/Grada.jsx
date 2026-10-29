@@ -3,7 +3,7 @@
 import { CUPO_POR_NIVEL } from '../../catalogo/elementos.js'
 import Elemento from './Elemento.jsx'
 
-export default function Grada({ nombre, descripcion, elementos, imagenes, onQuitar }) {
+export default function Grada({ nombre, descripcion, elementos, imagenes, onQuitar, onAbrir }) {
   const lleno = elementos.length >= CUPO_POR_NIVEL
 
   return (
@@ -33,6 +33,7 @@ export default function Grada({ nombre, descripcion, elementos, imagenes, onQuit
               elemento={el}
               urlImagen={imagenes.get(el.id)}
               onQuitar={onQuitar}
+              onAbrir={onAbrir}
             />
           ))
         )}

@@ -147,6 +147,13 @@ header h1 span {
   text-align: center;
   font-size: 0.88rem;
   border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-2);
+}
+
+#modo span {
+  flex: 1;
 }
 
 #modo[data-modo='navegador'] {
@@ -777,5 +784,131 @@ footer {
   }
   .elemento-quitar {
     opacity: 1;
+  }
+}
+
+/* --- Boton de cerrar, pill del pie y visor de fotos ------------------ */
+
+.boton-cerrar {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.boton-cerrar:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.pie-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--espacio-2);
+  max-width: 100%;
+  margin: 0;
+  padding: 0.3rem 0.4rem 0.3rem var(--espacio-3);
+  border: 1px solid var(--borde);
+  border-radius: 1.4rem;
+  background: rgba(255, 244, 224, 0.06);
+}
+
+.elemento-foto {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.elemento-foto:disabled {
+  cursor: progress;
+}
+
+.visor {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--espacio-2);
+  padding: var(--margen);
+  background: rgba(10, 5, 18, 0.88);
+}
+
+.visor-figura {
+  grid-column: 2;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: var(--espacio-2);
+  color: var(--crema);
+  text-align: center;
+}
+
+.visor-figura img {
+  max-width: 100%;
+  max-height: calc(100dvh - 7rem);
+  object-fit: contain;
+  border-radius: 9px;
+}
+
+.visor-cuenta {
+  color: var(--crema-apagada);
+}
+
+.visor-flecha,
+.visor .visor-cerrar {
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  color: var(--crema);
+  cursor: pointer;
+}
+
+.visor-flecha {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.6rem;
+}
+
+.visor-izq {
+  grid-column: 1;
+}
+
+.visor-der {
+  grid-column: 3;
+}
+
+.visor .visor-cerrar {
+  position: absolute;
+  top: var(--margen);
+  right: var(--margen);
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 30rem) {
+  .visor {
+    gap: var(--espacio-1);
+    padding: var(--espacio-1);
+  }
+  .visor-flecha {
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1.3rem;
   }
 }

@@ -7,6 +7,9 @@
 // reescrito el archivo, y este taller trata precisamente de entender donde
 // viven tus datos.
 
+import { useState } from 'react'
+import BotonCerrar from './BotonCerrar.jsx'
+
 const TEXTOS = {
   navegador:
     'Tu altar está guardado solo en este navegador. Si lo abres en otro lado, no va a estar ahí.',
@@ -14,9 +17,12 @@ const TEXTOS = {
 }
 
 export default function BannerDeModo({ modo }) {
+  const [visible, setVisible] = useState(true)
+  if (!visible) return null
   return (
     <p id="modo" data-modo={modo}>
-      {TEXTOS[modo] ?? TEXTOS.navegador}
+      <span>{TEXTOS[modo] ?? TEXTOS.navegador}</span>
+      <BotonCerrar etiqueta="Cerrar aviso" onClick={() => setVisible(false)} />
     </p>
   )
 }
