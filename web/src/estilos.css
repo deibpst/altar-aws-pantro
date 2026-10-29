@@ -373,9 +373,19 @@ main > * {
 
 /* Una tarjeta con reproductor de Spotify necesita mas ancho, y el dibujo
    del tipo se hace chico para darle lugar. */
+/* El reproductor compacto de Spotify recorta sus controles por debajo de
+   ~300px de ancho, asi que la tarjeta es ancha y el iframe aprovecha todo. */
 .elemento-ancho {
-  width: 17rem;
-  max-width: 100%;
+  width: min(26rem, 100%);
+}
+
+.elemento-ancho {
+  padding-inline: 0.25rem;
+}
+
+.elemento-ancho .elemento-texto,
+.elemento-ancho .elemento-etiqueta {
+  padding-inline: var(--espacio-2);
 }
 
 .elemento-ancho .elemento-figura {
@@ -744,16 +754,13 @@ footer {
    fila sin apretarse. */
 @media (max-width: 30rem) {
   .nivel {
-    padding: var(--espacio-3) var(--espacio-2) var(--espacio-4);
+    padding: var(--espacio-3) var(--espacio-1) var(--espacio-4);
   }
   .nivel-elementos {
     gap: var(--espacio-2);
   }
   .elemento {
     width: calc(50% - var(--espacio-1));
-  }
-  .elemento-ancho {
-    width: 100%;
   }
   aside {
     padding: var(--espacio-3);
