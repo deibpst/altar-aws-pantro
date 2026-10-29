@@ -9,20 +9,8 @@ export default function Encabezado({ nombre, onNombre }) {
     <header>
       <p className="encabezado-eyebrow">Día de Muertos</p>
       <h1>
-        Mi <span>ofrenda</span>
+        Ofrenda para <span>Pantro</span>
       </h1>
-      <p className="encabezado-sub">
-        <label htmlFor="nombre">Lo está armando</label>
-        <input
-          id="nombre"
-          className="encabezado-nombre"
-          type="text"
-          maxLength={40}
-          placeholder="tu nombre"
-          value={nombre}
-          onChange={(e) => onNombre(e.target.value)}
-        />
-      </p>
     </header>
   )
 }
