@@ -1,10 +1,10 @@
 // Una grada del altar, con su encabezado, su contador y sus elementos.
 
-import { CUPO_POR_NIVEL } from '../../catalogo/elementos.js'
+import { cupoDe } from '../../catalogo/elementos.js'
 import Elemento from './Elemento.jsx'
 
-export default function Grada({ nombre, descripcion, elementos, imagenes, onQuitar, onAbrir }) {
-  const lleno = elementos.length >= CUPO_POR_NIVEL
+export default function Grada({ nivel, nombre, descripcion, elementos, imagenes, onQuitar, onAbrir }) {
+  const lleno = elementos.length >= cupoDe(nivel)
 
   return (
     <section className="nivel">
@@ -16,7 +16,7 @@ export default function Grada({ nombre, descripcion, elementos, imagenes, onQuit
         {/* El contador se pone ambar cuando la grada ya no acepta mas, asi
             nadie descubre el limite hasta que lo choca. */}
         <span className={`nivel-cuenta${lleno ? ' nivel-lleno' : ''}`}>
-          {elementos.length} / {CUPO_POR_NIVEL}
+          {elementos.length} / {cupoDe(nivel)}
         </span>
       </div>
 

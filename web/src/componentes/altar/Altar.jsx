@@ -38,6 +38,7 @@ export default function Altar({ elementos, imagenes, onQuitar }) {
       {NIVELES.map(({ nivel, nombre, descripcion }) => (
         <Grada
           key={nivel}
+          nivel={nivel}
           nombre={nombre}
           descripcion={descripcion}
           elementos={deLaGrada(elementos, nivel)}

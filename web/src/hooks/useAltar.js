@@ -17,7 +17,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import * as almacen from '../datos/almacen.js'
-import { CUPO_POR_NIVEL } from '../catalogo/elementos.js'
+import { cupoDe } from '../catalogo/elementos.js'
 
 /** Resuelve la imagen de cada elemento a la vez, no una tras otra. */
 async function urlesDe(elementos) {
@@ -70,7 +70,7 @@ export function useAltar() {
     [elementos],
   )
 
-  const nivelLleno = useCallback((nivel) => cuantosEn(nivel) >= CUPO_POR_NIVEL, [cuantosEn])
+  const nivelLleno = useCallback((nivel) => cuantosEn(nivel) >= cupoDe(nivel), [cuantosEn])
 
   /**
    * Pone algo en el altar.

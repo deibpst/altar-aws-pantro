@@ -5,7 +5,7 @@
 // apagada y con su cuenta, no desaparece: asi se entiende por que no se
 // puede elegir.
 
-import { NIVELES, CUPO_POR_NIVEL } from '../../catalogo/elementos.js'
+import { NIVELES, cupoDe } from '../../catalogo/elementos.js'
 
 export default function SelectorDeGrada({ nivel, nivelLleno, cuantosEn, onCambiar }) {
   return (
@@ -25,7 +25,7 @@ export default function SelectorDeGrada({ nivel, nivelLleno, cuantosEn, onCambia
             />
             <span>{n.nombre}</span>
             <small>
-              {cuantosEn(n.nivel)} / {CUPO_POR_NIVEL}
+              {cuantosEn(n.nivel)} / {cupoDe(n.nivel)}
             </small>
           </label>
         )

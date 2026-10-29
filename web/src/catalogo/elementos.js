@@ -128,7 +128,8 @@ export function necesitaPanel(tipo) {
   return Boolean(info.pideTexto || info.pideLink || info.pideImagen)
 }
 
-export const CUPO_POR_NIVEL = 6
+// La grada de arriba (nivel 3) aguanta mas fotos que las demas.
+export const cupoDe = (nivel) => (nivel === 3 ? 10 : 6)
 
 // El altar no arranca vacio. Esto es un set tradicional tipico, para que
 // desde el primer deploy se vea vestido y nadie empiece en una pagina
