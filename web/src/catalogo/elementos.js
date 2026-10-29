@@ -109,7 +109,7 @@ export const TIPOS = {
 export const NIVELES = [
   { nivel: 3, nombre: 'Arriba', descripcion: 'Pantro <3' },
   { nivel: 2, nombre: 'En medio', descripcion: '' },
-  { nivel: 1, nombre: 'Abajo', descripcion: 'Para su camino' },
+  { nivel: 1, nombre: 'Abajo', descripcion: 'Le gustaba:' },
 ]
 
 export function etiquetaDe(tipo) {
