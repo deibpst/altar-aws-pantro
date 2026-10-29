@@ -55,9 +55,7 @@ export default function Elemento({ elemento, urlImagen, onQuitar, onAbrir }) {
         )}
       </div>
 
-      <span className="elemento-etiqueta">
-        {elemento.puestoPor ? `${etiqueta} · ${elemento.puestoPor}` : etiqueta}
-      </span>
+      <span className="elemento-etiqueta">{etiqueta}</span>
 
       {elemento.texto && <p className="elemento-texto">{elemento.texto}</p>}
 
