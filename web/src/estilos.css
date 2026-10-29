@@ -17,6 +17,14 @@
   --verde: #2ec27e;
   --turquesa: #35c2c7;
   --radio: 16px;
+  /* Escala de espacios: nada va pegado a nada. Usa estos, no numeros sueltos. */
+  --espacio-1: 0.5rem;
+  --espacio-2: 0.75rem;
+  --espacio-3: 1rem;
+  --espacio-4: 1.5rem;
+  --espacio-5: 2rem;
+  /* Margen lateral de la pagina: nunca menos de esto contra el borde. */
+  --margen: clamp(1rem, 4vw, 1.5rem);
   /* adornos.js mete aqui la hilera de petalos */
   --petalos: none;
 }
@@ -31,12 +39,17 @@
   display: none !important;
 }
 
+button,
+input {
+  font-family: inherit;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   background: var(--morado);
   color: var(--crema);
-  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   line-height: 1.5;
 }
 
@@ -54,7 +67,7 @@ body {
 /* --- Encabezado ------------------------------------------------------ */
 
 header {
-  padding: 1.4rem 1.25rem 1.6rem;
+  padding: var(--espacio-4) var(--margen) var(--espacio-4);
   text-align: center;
 }
 
@@ -80,7 +93,12 @@ header h1 span {
 }
 
 .encabezado-sub {
-  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--espacio-1);
+  margin: var(--espacio-2) 0 0;
   color: var(--crema-apagada);
   font-size: 0.98rem;
 }
@@ -98,7 +116,7 @@ header h1 span {
 .encabezado-nombre {
   width: auto;
   max-width: 11rem;
-  margin-left: 0.4rem;
+  margin: 0;
   padding: 0.2rem 0.55rem;
   font-size: 0.98rem;
   font-weight: 600;
@@ -121,10 +139,12 @@ header h1 span {
 }
 
 #modo {
-  margin: 1.2rem auto 0;
+  /* El margen lateral nunca baja de --margen y, en pantallas anchas, centra. */
+  margin: var(--espacio-3) max(var(--margen), calc((100% - 46rem) / 2)) 0;
   max-width: 46rem;
-  padding: 0.7rem 1.1rem;
-  border-radius: 999px;
+  padding: var(--espacio-2) var(--espacio-3);
+  border-radius: 1.4rem;
+  text-align: center;
   font-size: 0.88rem;
   border: 2px solid transparent;
 }
@@ -145,11 +165,17 @@ header h1 span {
 
 main {
   display: grid;
-  gap: 1.8rem;
+  gap: var(--espacio-5);
   grid-template-columns: 1fr;
   max-width: 78rem;
   margin: 0 auto;
-  padding: 0.6rem 1.25rem 4rem;
+  padding: var(--espacio-4) var(--margen) 4rem;
+}
+
+/* Sin esto una grada con contenido ancho estira la columna de la rejilla y
+   la pagina se desborda hacia los lados. */
+main > * {
+  min-width: 0;
 }
 
 @media (min-width: 62rem) {
@@ -164,7 +190,7 @@ main {
 #altar {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  gap: var(--espacio-5);
 }
 
 .nivel {
@@ -172,7 +198,7 @@ main {
   background: var(--morado-alto);
   border: 2px solid var(--borde);
   border-radius: var(--radio);
-  padding: 0.9rem 1.1rem 1.7rem;
+  padding: var(--espacio-3) var(--espacio-3) var(--espacio-4);
 }
 
 /* La hilera de petalos de cempasuchil que remata la grada por abajo, como
@@ -207,14 +233,14 @@ main {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.8rem;
-  margin-bottom: 0.9rem;
+  gap: var(--espacio-2);
+  margin-bottom: var(--espacio-3);
 }
 
 .nivel h2 {
   display: flex;
   align-items: baseline;
-  gap: 0.55rem;
+  gap: var(--espacio-1);
   flex-wrap: wrap;
   margin: 0;
   font-size: 1.02rem;
@@ -249,7 +275,7 @@ main {
   /* Centrados, como se acomodan las cosas en un altar de verdad. Pegados a
      la izquierda dejaban la grada medio vacia y no se leia como altar. */
   justify-content: center;
-  gap: 0.8rem;
+  gap: var(--espacio-3);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -269,7 +295,7 @@ main {
 .elemento {
   position: relative;
   width: 7.4rem;
-  padding: 0.5rem 0.45rem 0.6rem;
+  padding: var(--espacio-1) var(--espacio-1) var(--espacio-2);
   background: var(--morado-claro);
   border: 2px solid transparent;
   border-radius: 13px;
@@ -316,7 +342,7 @@ main {
 /* La etiqueta vive escondida y aparece con el hover. */
 .elemento-etiqueta {
   display: block;
-  margin-top: 0.35rem;
+  margin-top: var(--espacio-1);
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--amarillo);
@@ -332,7 +358,7 @@ main {
 }
 
 .elemento-texto {
-  margin: 0.3rem 0 0;
+  margin: var(--espacio-1) 0 0;
   font-size: 0.78rem;
   color: var(--crema);
   overflow-wrap: anywhere;
@@ -340,7 +366,7 @@ main {
 
 .elemento-link {
   display: inline-block;
-  margin-top: 0.25rem;
+  margin-top: var(--espacio-1);
   font-size: 0.72rem;
   color: var(--turquesa);
 }
@@ -349,6 +375,7 @@ main {
    del tipo se hace chico para darle lugar. */
 .elemento-ancho {
   width: 17rem;
+  max-width: 100%;
 }
 
 .elemento-ancho .elemento-figura {
@@ -359,7 +386,7 @@ main {
 .elemento-ancho iframe {
   width: 100%;
   height: 80px;
-  margin-top: 0.5rem;
+  margin-top: var(--espacio-2);
   border: 0;
   border-radius: 10px;
   display: block;
@@ -399,41 +426,48 @@ aside {
   background: var(--morado-alto);
   border: 2px solid var(--borde);
   border-radius: var(--radio);
-  padding: 1.2rem 1.3rem 1.5rem;
-  position: sticky;
-  top: 1rem;
+  padding: var(--espacio-4);
+}
+
+/* Pegajoso solo cuando va al lado del altar. Debajo, en una sola columna,
+   taparia el contenido al hacer scroll. */
+@media (min-width: 62rem) {
+  aside {
+    position: sticky;
+    top: var(--espacio-3);
+  }
 }
 
 aside h2 {
-  margin: 0 0 1rem;
+  margin: 0 0 var(--espacio-3);
   font-size: 1.05rem;
   color: var(--naranja-claro);
 }
 
 label {
   display: block;
-  margin-bottom: 0.9rem;
+  margin-bottom: var(--espacio-3);
   font-size: 0.82rem;
   color: var(--crema-apagada);
 }
 
 label > span {
   display: block;
-  margin-bottom: 0.3rem;
+  margin-bottom: var(--espacio-1);
 }
 
 label > small {
   display: block;
-  margin-top: 0.3rem;
+  margin-top: var(--espacio-1);
   font-size: 0.72rem;
   color: #8a76a3;
 }
 
 input {
   width: 100%;
-  padding: 0.6rem 0.7rem;
+  padding: var(--espacio-2);
   font: inherit;
-  font-size: 0.9rem;
+  font-size: 1rem; /* 16px: menos y iOS hace zoom al enfocar el campo */
   color: var(--crema);
   background: var(--morado);
   border: 2px solid var(--borde);
@@ -456,11 +490,11 @@ input[type='file'] {
    ve dibujada, se pica, y cae en su grada. */
 
 .galeria-grupo {
-  margin-bottom: 1.3rem;
+  margin-bottom: var(--espacio-4);
 }
 
 .galeria-grupo-titulo {
-  margin: 0 0 0.55rem;
+  margin: 0 0 var(--espacio-2);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -483,8 +517,8 @@ input[type='file'] {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: var(--espacio-2);
 }
 
 .opcion {
@@ -492,8 +526,8 @@ input[type='file'] {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.15rem;
-  padding: 0.5rem 0.25rem 0.4rem;
+  gap: 0.25rem;
+  padding: var(--espacio-2) var(--espacio-1);
   font: inherit;
   color: var(--crema);
   background: var(--morado-claro);
@@ -549,7 +583,8 @@ input[type='file'] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  gap: var(--espacio-2);
+  margin-bottom: var(--espacio-3);
 }
 
 .panel-encabezado h3 {
@@ -577,8 +612,8 @@ input[type='file'] {
 }
 
 .panel-niveles {
-  margin: 0 0 1rem;
-  padding: 0.6rem 0.7rem 0.7rem;
+  margin: 0 0 var(--espacio-3);
+  padding: var(--espacio-2) var(--espacio-3) var(--espacio-2);
   border: 2px solid var(--borde);
   border-radius: 10px;
 }
@@ -592,9 +627,9 @@ input[type='file'] {
 .panel-niveles label {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: var(--espacio-1);
   margin: 0;
-  padding: 0.3rem 0;
+  padding: var(--espacio-1) 0;
   font-size: 0.84rem;
   color: var(--crema);
   cursor: pointer;
@@ -651,8 +686,8 @@ input[type='file'] {
 
 .aviso-error {
   max-width: 68rem;
-  margin: 0 auto 1rem;
-  padding: 0.7rem 0.9rem;
+  margin: var(--espacio-3) var(--margen) 0;
+  padding: var(--espacio-2) var(--espacio-3);
   border-radius: 10px;
   font-size: 0.85rem;
   background: rgba(224, 54, 110, 0.14);
@@ -661,8 +696,8 @@ input[type='file'] {
 }
 
 .aviso-error button {
-  margin-left: 0.5rem;
-  padding: 0.25rem 0.6rem;
+  margin-left: var(--espacio-1);
+  padding: 0.25rem var(--espacio-2);
   font: inherit;
   font-size: 0.8rem;
   font-weight: 600;
@@ -683,10 +718,46 @@ input[type='file'] {
 }
 
 footer {
-  padding: 1.6rem 1.25rem 2.6rem;
+  padding: var(--espacio-4) var(--margen) var(--espacio-5);
   text-align: center;
   color: #8a76a3;
   font-size: 0.8rem;
+}
+
+/* Pantallas tactiles: no hay hover, asi que lo que solo aparecia al pasar el
+   cursor (la etiqueta y el boton de quitar) se queda visible. */
+@media (hover: none) {
+  .elemento-etiqueta,
+  .elemento-quitar {
+    opacity: 1;
+    transform: none;
+  }
+  .elemento-quitar {
+    width: 2rem;
+    height: 2rem;
+    top: -0.6rem;
+    right: -0.6rem;
+  }
+}
+
+/* Telefonos chicos: tarjetas un poco mas angostas para que quepan dos por
+   fila sin apretarse. */
+@media (max-width: 30rem) {
+  .nivel {
+    padding: var(--espacio-3) var(--espacio-2) var(--espacio-4);
+  }
+  .nivel-elementos {
+    gap: var(--espacio-2);
+  }
+  .elemento {
+    width: calc(50% - var(--espacio-1));
+  }
+  .elemento-ancho {
+    width: 100%;
+  }
+  aside {
+    padding: var(--espacio-3);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

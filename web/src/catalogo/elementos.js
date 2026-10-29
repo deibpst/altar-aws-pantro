@@ -76,6 +76,34 @@ export const TIPOS = {
     pideTexto: true,
     ayuda: 'El nombre que va en la frente',
   },
+  churu: {
+    etiqueta: 'Churu',
+    grupo: 'personal',
+    nivel: 2,
+    pideTexto: true,
+    ayuda: 'De qué sabor',
+  },
+  premios: {
+    etiqueta: 'Premios de gato',
+    grupo: 'personal',
+    nivel: 2,
+    pideTexto: true,
+    ayuda: 'Para quién son',
+  },
+  amasar: {
+    etiqueta: 'Amasar',
+    grupo: 'personal',
+    nivel: 2,
+    pideTexto: true,
+    ayuda: 'Qué cobija amasaba',
+  },
+  crookshanks: {
+    etiqueta: 'Jugar con Crookshanks',
+    grupo: 'personal',
+    nivel: 3,
+    pideTexto: true,
+    ayuda: 'A qué jugaban',
+  },
 }
 
 export const NIVELES = [

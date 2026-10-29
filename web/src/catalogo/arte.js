@@ -19,6 +19,9 @@ const TURQUESA = '#3D8B91'
 const ROSA = '#E05B7F'
 const AMARILLO = '#F2CB5B'
 const AZUL = '#4A6FA5'
+const ROJO = '#D23A3A'
+const GRIS = '#8E8E99'
+const NEGRO = '#2A2330'
 
 function svg(contenido) {
   return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${contenido}</svg>`
@@ -34,6 +37,35 @@ function enCirculo(n, radio, cx, cy, forma) {
 
 const petalo = (radio, cx, cy) =>
   `<ellipse cx="${cx}" cy="${cy - radio}" rx="7" ry="11" />`
+
+// Un gato de busto, centrado en (0, 0) y listo para moverse con transform.
+// `dir` es hacia donde estira la patita: 1 a la derecha, -1 a la izquierda.
+function gato(pelo, collar, dir) {
+  return `
+    <ellipse cx="0" cy="28" rx="16" ry="18" fill="${pelo}"/>
+    <ellipse cx="0" cy="30" rx="7" ry="12" fill="#FFFFFF"/>
+    <ellipse cx="${dir * 18}" cy="16" rx="6" ry="4.5" fill="${pelo}" transform="rotate(${dir * -25} ${dir * 18} 16)"/>
+    <ellipse cx="${dir * 22}" cy="14" rx="3.2" ry="2.8" fill="#FFFFFF"/>
+    <path d="M-14 -6 L-13 -24 L-2 -13 z M14 -6 L13 -24 L2 -13 z" fill="${pelo}"/>
+    <path d="M-11 -10 L-11 -19 L-5 -13 z M11 -10 L11 -19 L5 -13 z" fill="${ROSA}"/>
+    <ellipse cx="0" cy="0" rx="15" ry="13" fill="${pelo}"/>
+    <ellipse cx="0" cy="5" rx="7" ry="5.5" fill="#FFFFFF"/>
+    <g fill="${AMARILLO}"><circle cx="-6" cy="-3" r="3"/><circle cx="6" cy="-3" r="3"/></g>
+    <g fill="${OSCURO}"><circle cx="-6" cy="-3" r="1.4"/><circle cx="6" cy="-3" r="1.4"/></g>
+    <path d="M-2 2.5 L2 2.5 L0 5 z" fill="${ROSA}"/>
+    <path d="M-11 11 q 11 6 22 0 l 0 4 q -11 6 -22 0 z" fill="${collar}"/>
+    <circle cx="0" cy="19" r="2.4" fill="${AMARILLO}"/>
+  `
+}
+
+// Pata de gato vista de arriba, con sus almohadillas.
+function pata(cx, cy) {
+  return `<g transform="translate(${cx} ${cy})">
+    <ellipse cx="0" cy="2" rx="15" ry="12" fill="${GRIS}"/>
+    <g fill="${GRIS}"><circle cx="-14" cy="-9" r="6"/><circle cx="-5" cy="-15" r="6"/><circle cx="5" cy="-15" r="6"/><circle cx="14" cy="-9" r="6"/></g>
+    <g fill="${ROSA}"><ellipse cx="0" cy="5" rx="7" ry="5.5"/><circle cx="-13" cy="-9" r="2.6"/><circle cx="-4.5" cy="-14" r="2.6"/><circle cx="4.5" cy="-14" r="2.6"/><circle cx="13" cy="-9" r="2.6"/></g>
+  </g>`
+}
 
 export const ARTE = {
   // Flor de cempasuchil. Su olor y su color guian a las animas.
@@ -179,6 +211,51 @@ export const ARTE = {
       <path d="M36 74 L64 74"/><path d="M44 70 L44 78"/><path d="M52 70 L52 78"/><path d="M60 70 L60 78"/>
     </g>
     <path d="M38 24 q 12 -8 24 0" stroke="${AMARILLO}" stroke-width="4" fill="none" stroke-linecap="round"/>
+  `),
+  // Churu. La crema que se lame directo del tubito.
+  churu: svg(`
+    <g transform="rotate(24 50 58)">
+      <path d="M50 30 q -9 -4 0 -9 q 9 -4 0 -9 q -5 -2 -2 -5" stroke="#E0A763" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <path d="M38 36 L62 36 L62 88 L58 92 L54 88 L50 92 L46 88 L42 92 L38 88 z" fill="${CREMA}"/>
+      <rect x="38" y="30" width="24" height="9" rx="2" fill="${MORADO}"/>
+      <rect x="38" y="46" width="24" height="30" fill="${NARANJA}"/>
+      <ellipse cx="48" cy="61" rx="7" ry="4.5" fill="#FFFFFF"/>
+      <path d="M54 61 l 6 -4.5 l 0 9 z" fill="#FFFFFF"/>
+      <circle cx="44.5" cy="60" r="1.3" fill="${OSCURO}"/>
+    </g>
+  `),
+
+  // Premios. Con lo que se compra su cariño.
+  premios: svg(`
+    <path d="M50 22 c -7 -7 -13 3 0 12 c 13 -9 7 -19 0 -12 z" fill="${ROSA}"/>
+    <g fill="${NARANJA_CLARO}">
+      <g transform="translate(28 48) rotate(-10)"><path d="M-12 0 q 12 -10 24 0 q -12 10 -24 0 z"/><path d="M11 0 l 8 -6 l 0 12 z"/><circle cx="-6" cy="-1.5" r="1.6" fill="${OSCURO}"/></g>
+      <g transform="translate(68 42) rotate(12)"><path d="M-12 0 q 12 -10 24 0 q -12 10 -24 0 z"/><path d="M11 0 l 8 -6 l 0 12 z"/><circle cx="-6" cy="-1.5" r="1.6" fill="${OSCURO}"/></g>
+    </g>
+    <path d="M14 58 L86 58 q -4 32 -36 32 q -32 0 -36 -32 z" fill="${TURQUESA}"/>
+    <rect x="12" y="55" width="76" height="7" rx="3.5" fill="#2F6E73"/>
+    <g fill="${CREMA}">
+      <ellipse cx="50" cy="78" rx="7" ry="5.5"/>
+      <circle cx="40" cy="70" r="2.8"/><circle cx="46" cy="66.5" r="2.8"/><circle cx="54" cy="66.5" r="2.8"/><circle cx="60" cy="70" r="2.8"/>
+    </g>
+  `),
+
+  // Amasar. Amasando la cobija hasta que quede perfecta.
+  amasar: svg(`
+    <rect x="6" y="62" width="88" height="32" rx="12" fill="${MORADO}"/>
+    <path d="M14 74 q 14 -6 28 0 t 28 0 t 20 0 M14 84 q 14 -6 28 0 t 28 0 t 20 0" stroke="#9A5A88" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="32" cy="64" rx="20" ry="5" fill="#5E2D52"/>
+    ${pata(32, 52)}
+    ${pata(68, 32)}
+    <g stroke="${CREMA}" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8">
+      <path d="M88 20 q 4 4 0 8"/><path d="M92 16 q 6 8 0 16"/>
+    </g>
+  `),
+
+  // Jugar con Crookshanks. Dos gatos que no se estan quietos.
+  crookshanks: svg(`
+    <g transform="translate(27 36) rotate(-6)">${gato(GRIS, AZUL, 1)}</g>
+    <g transform="translate(73 36) rotate(6)">${gato(NEGRO, ROJO, -1)}</g>
   `),
 }
 

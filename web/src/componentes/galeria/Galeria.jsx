@@ -18,8 +18,8 @@ import { TIPOS } from '../../catalogo/elementos.js'
 import Opcion from './Opcion.jsx'
 
 const GRUPOS = [
-  { id: 'tradicional', titulo: 'Tradicionales', pista: 'Se ponen y ya' },
-  { id: 'personal', titulo: 'Suyas', pista: 'Estas piden un dato' },
+  { id: 'tradicional', titulo: 'Tradicionales' },
+  { id: 'personal', titulo: 'Suyas' },
 ]
 
 function tiposDe(grupo) {
@@ -29,13 +29,12 @@ function tiposDe(grupo) {
 export default function Galeria({ nivelLleno, onElegir }) {
   return (
     <section className="galeria" aria-labelledby="galeria-titulo">
-      <h2 id="galeria-titulo">Qué le pones</h2>
+      <h2 id="galeria-titulo">Elementos</h2>
 
       {GRUPOS.map((grupo) => (
         <div className="galeria-grupo" key={grupo.id}>
           <p className="galeria-grupo-titulo">
             {grupo.titulo}
-            <span>{grupo.pista}</span>
           </p>
           <ul className="galeria-rejilla">
             {tiposDe(grupo.id).map(([tipo, info]) => (
